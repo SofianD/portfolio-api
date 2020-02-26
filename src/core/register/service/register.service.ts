@@ -14,7 +14,6 @@ export class RegisterService {
         userData: any
         ) {
         const newAdmin = new this.adminModel(userData);
-        console.log(userData);
         return await newAdmin.save();
     }
 }

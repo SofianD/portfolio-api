@@ -12,8 +12,6 @@ export class RegisterController {
     async register(
         @Body('userData') userData: any,
     ) {
-        const result = await this.registerService.createAdmin(userData);
-        console.log(result);
-        return 'ok'
+        return await this.registerService.createAdmin(userData);
     }
 }
