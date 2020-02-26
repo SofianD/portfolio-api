@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { RegisterController } from './controller/register.controller';
 import { RegisterService } from './service/register.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AdminSchema } from 'src/shared/models/admin.interface';
+import { CheckFormMiddleware } from './middleware/check-form.middleware';
 
 @Module({
     imports: [
@@ -18,4 +19,10 @@ import { AdminSchema } from 'src/shared/models/admin.interface';
         RegisterService
     ]
 })
-export class RegisterModule {}
+export class RegisterModule implements NestModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer
+            .apply(CheckFormMiddleware)
+            .forRoutes('register');
+    }
+}
