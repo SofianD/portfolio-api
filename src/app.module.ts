@@ -7,7 +7,10 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [
     MongooseModule.forRoot(
       'mongodb+srv://user:5bLXgHFheEOQrowe@cluster0-ohnuj.mongodb.net/test?retryWrites=true&w=majority',
-      { useNewUrlParser: true }
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }
     ),
     RegisterModule
   ]
