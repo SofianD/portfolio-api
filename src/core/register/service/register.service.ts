@@ -12,8 +12,8 @@ export class RegisterService {
 
     async createAdmin(
         userData: any
-        ) {
-        const newAdmin = new this.adminModel(userData);
+    ) {
+        const newAdmin = await new this.adminModel(userData);
         return await newAdmin.save();
     }
 }

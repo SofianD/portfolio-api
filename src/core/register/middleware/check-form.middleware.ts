@@ -5,13 +5,15 @@ export class CheckFormMiddleware implements NestMiddleware {
   use(req: any, res: any, next: () => void) {
 
     const userData = req.body.userData;
-    this.checkBodyValue(userData).length === 0 ?
-      next()
+    
+    this.checkBodyValue(userData).length === 0
+    ?
+    next()
     :
-      res.status(401).json({
-        message: 'Failed request',
-        error: this.checkBodyValue(userData)
-      })
+    res.status(401).json({
+      message: 'Failed request',
+      error: this.checkBodyValue(userData)
+    })
   }
 
   checkBodyValue(userData: any) {
