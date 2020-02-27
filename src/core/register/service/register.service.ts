@@ -14,6 +14,8 @@ export class RegisterService {
         userData: any
     ) {
         const newAdmin = await new this.adminModel(userData);
-        return await newAdmin.save();
+        const result = await newAdmin.save();
+        const {__v , password ,...createdAdmin} = result._doc;  // const createdAdmin = result._doc whitout "__v" and "password" parameters
+        return createdAdmin;
     }
 }
