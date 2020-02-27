@@ -4,6 +4,7 @@ import { RegisterService } from './service/register.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AdminSchema } from 'src/shared/models/admin.interface';
 import { CheckFormMiddleware } from './middleware/check-form.middleware';
+import { CryptPwMiddleware } from './middleware/crypt-pw.middleware';
 
 @Module({
     imports: [
@@ -22,7 +23,10 @@ import { CheckFormMiddleware } from './middleware/check-form.middleware';
 export class RegisterModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(CheckFormMiddleware)
+            .apply(
+                CheckFormMiddleware,
+                CryptPwMiddleware
+            )
             .forRoutes('register');
     }
 }
