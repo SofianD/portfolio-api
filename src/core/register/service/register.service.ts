@@ -13,9 +13,8 @@ export class RegisterService {
     async createAdmin(
         userData: any
     ) {
-        const newAdmin = await new this.adminModel(userData);
-        const result = await newAdmin.save();
-        const {__v , password ,...createdAdmin} = result._doc;  // const createdAdmin = result._doc whitout "__v" and "password" parameters
+        const result = await new this.adminModel(userData).save();
+        const {__v , password ,...createdAdmin} = result._doc;  // <-    const createdAdmin = result._doc whitout "__v" and "password" parameters
         return createdAdmin;
     }
 }
