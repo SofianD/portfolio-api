@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { Document } from 'mongoose';
 
 export const AdminSchema = new mongoose.Schema({
     email: {
@@ -11,7 +12,7 @@ export const AdminSchema = new mongoose.Schema({
     }
 })
 
-export interface Admin {
+export interface Admin extends Document {
     email: string;
     password: string;
 }
