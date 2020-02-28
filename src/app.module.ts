@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { RegisterModule } from './core/register/register.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { LoginModule } from './core/login/login.module';
+import { ProjectModule } from './core/project/project.module';
 
 
 @Module({
@@ -14,7 +15,8 @@ import { LoginModule } from './core/login/login.module';
       }
     ),
     RegisterModule,
-    LoginModule
+    LoginModule,
+    ProjectModule
   ]
 })
 export class AppModule {}
