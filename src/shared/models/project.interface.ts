@@ -7,7 +7,7 @@ export const ProjectSchema = new mongoose.Schema({
         required: true
     },
     created_date : {
-        type: Date,
+        type: String,
         required: true
     },
     description : {
@@ -33,8 +33,7 @@ export const ProjectSchema = new mongoose.Schema({
     skills: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Skill',
-            required: true
+            ref: 'Skill'
         }
     ],
     framework: [
@@ -55,8 +54,8 @@ export interface Project extends Document {
     name: string;
     created_date: Date;
     description: string;
-    images: object[];
-    skills: object[];
-    framework: object[];
-    platform: object[];
+    images: object[] | null;
+    skills: object[] | null;
+    framework: object[] | null;
+    platform: object[] | null;
 }

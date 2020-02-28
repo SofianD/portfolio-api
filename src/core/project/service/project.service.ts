@@ -15,7 +15,13 @@ export class ProjectService {
     }
 
     async oneProject(id: string) {
-        return await this.projectModel.findOne({_id: id}).exec();
+        try {
+            const result = await this.projectModel.findOne({_id: id});
+            const {__v, ...project} = result._doc;
+            return project;
+        } catch (error) {
+            return null;
+        }
     }
 
     async create(project: Project) {
