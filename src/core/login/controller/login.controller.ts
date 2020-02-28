@@ -17,7 +17,7 @@ export class LoginController {
         // Check if admin exist
         const result = await this.loginService.login(data.email);
         if (result === null)  throw new HttpException('No account with this email', HttpStatus.NOT_FOUND);
-        
+
         // Check if password match
         const isAuth = await bcrypt.compare(data.password, result.password);
         if (isAuth === false) throw new HttpException('Wrong password', HttpStatus.FORBIDDEN);
