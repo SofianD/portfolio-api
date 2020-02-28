@@ -6,10 +6,20 @@ import { ProjectSchema } from 'src/shared/models/project.interface';
 
 @Module({
     imports: [
-        MongooseModule.forFeature([{
-            name: 'Project',
-            schema: ProjectSchema
-        }])
+        MongooseModule.forFeature([
+            {
+                name: 'Project',
+                schema: ProjectSchema
+            }
+            // {                                            <-  imports skill model
+            //     name: '',                                <-
+            //     schema:                                  <-
+            // },
+            // {                                            <-  imports framework model
+            //     name: '',                                <-
+            //     schema:                                  <-
+            // }
+        ])
     ],
     controllers: [
         ProjectController
