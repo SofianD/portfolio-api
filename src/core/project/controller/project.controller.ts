@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, UseGuards, Body, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Param, Post, UseGuards, Body, Delete, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { AuthGuard } from 'src/shared/guards/auth.guard';
 import { ProjectService } from '../service/project.service';
 import { Project } from 'src/shared/models/project.interface';
@@ -16,8 +16,12 @@ export class ProjectController {
     }
 
     @Get(':id')
-    async getOneProject(@Param('id') id: string) {
-        return this.projectService.oneProject(id);
+    async getOneProject(
+        @Param('id') id: string
+    ) {
+        const result = await this.projectService.oneProject(id);
+        if (result === null) throw new HttpException('NOT FOUND', HttpStatus.NOT_FOUND);
+        return result;
     }
 
     @Post()
