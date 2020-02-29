@@ -16,8 +16,8 @@ export class FrameworkService {
     async oneFramework(id: string) {
         try {
             const result = await this.fwModel.findOne({_id: id});
-            const {__v, ...createdFramework} = result._doc;
-            return createdFramework;
+            const {__v, ...framework} = result._doc;
+            return framework;
         } catch (error) {
             return null;
         }
