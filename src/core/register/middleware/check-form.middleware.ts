@@ -13,7 +13,7 @@ export class CheckFormMiddleware implements NestMiddleware {
     res.status(401).json({
       message: 'Failed request',
       error: this.checkBodyValue(userData)
-    })
+    });
   }
 
   checkBodyValue(userData: any) {
