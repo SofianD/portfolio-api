@@ -27,7 +27,7 @@ export class MessageController {
     @Post()
     @UseGuards(AuthGuard)
     async createMessage(
-        @Body('message') message: Message
+        @Body('messageData') message: Message
     ):Promise<Message> {
         return await this.msgService.create(message);
     }
@@ -36,7 +36,7 @@ export class MessageController {
     @UseGuards(AuthGuard)
     async updateMessage(
         @Param('id') id: string,
-        @Body('message') message: Message
+        @Body('messageData') message: Message
     ) {
         return await this.msgService.update(id, message) === 0
         ?
