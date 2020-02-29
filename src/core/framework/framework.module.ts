@@ -26,12 +26,9 @@ export class FrameworkModule implements NestModule {
             .apply(
                 CheckFormMiddleware
             )
-            .exclude(
-                {
-                    path: 'framework',
-                    method: RequestMethod.GET
-                }
-            )
-            .forRoutes('framework');
+            .forRoutes(
+                { path: 'framework', method: RequestMethod.POST },
+                { path: 'framework', method: RequestMethod.PUT }
+            );
     }
 }
