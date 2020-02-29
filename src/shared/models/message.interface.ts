@@ -20,6 +20,10 @@ export const MessageSchema = new mongoose.Schema({
     sender: {
         type: String,
         required: true
+    },
+    date: {
+        default: Date.now(),
+        type: Date
     }
 })
 
@@ -29,4 +33,5 @@ export interface Message {
     phone_number: string;
     email: string;
     sender: string;
+    date: Date;
 }
