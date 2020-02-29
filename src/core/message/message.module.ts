@@ -1,34 +1,36 @@
 import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
-import { FrameworkService } from './service/framework.service';
-import { FrameworkController } from './controller/framework.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { FrameworkSchema } from 'src/shared/models/framework.interface';
+import { MessageSchema } from 'src/shared/models/message.interface';
+import { MessageController } from './controller/message.controller';
+import { MessageService } from './service/message.service';
 import { CheckFormMiddleware } from "./middleware/check-form.middleware";
+
+
 @Module({
     imports: [
         MongooseModule.forFeature([
             {
-                name: 'Framework',
-                schema: FrameworkSchema
+                name: 'Message',
+                schema: MessageSchema
             }
         ])
     ],
     controllers: [
-        FrameworkController
+        MessageController
     ],
     providers: [
-        FrameworkService
+        MessageService
     ]
 })
-export class FrameworkModule implements NestModule {
+export class MessageModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
             .apply(
                 CheckFormMiddleware
             )
             .forRoutes(
-                { path: 'framework', method: RequestMethod.POST },
-                { path: 'framework', method: RequestMethod.PUT }
+                { path: 'message', method: RequestMethod.POST },
+                { path: 'message', method: RequestMethod.PUT }
             );
     }
 }
