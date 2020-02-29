@@ -32,12 +32,9 @@ export class SkillModule implements NestModule {
             .apply(
                 CheckFormMiddleware
             )
-            .exclude(
-                {
-                    path: 'skill',
-                    method: RequestMethod.GET
-                }
-            )
-            .forRoutes('skill');
+            .forRoutes(
+                { path: 'skill', method: RequestMethod.POST },
+                { path: 'skill', method: RequestMethod.PUT }
+            );
     }
 }
