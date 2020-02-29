@@ -3,6 +3,7 @@ import { ProjectController } from './controller/project.controller';
 import { ProjectService } from './service/project.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProjectSchema } from 'src/shared/models/project.interface';
+import { FrameworkSchema } from 'src/shared/models/framework.interface';
 
 @Module({
     imports: [
@@ -10,11 +11,11 @@ import { ProjectSchema } from 'src/shared/models/project.interface';
             {
                 name: 'Project',
                 schema: ProjectSchema
-            }
-            // {                                            <-  imports skill model
-            //     name: '',                                <-
-            //     schema:                                  <-
-            // },
+            },
+            {
+                name: 'Framework',
+                schema: FrameworkSchema
+            },
             // {                                            <-  imports framework model
             //     name: '',                                <-
             //     schema:                                  <-
