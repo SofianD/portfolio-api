@@ -38,12 +38,20 @@ export class ProjectController {
         @Param('id') id: string,
         @Body('projectData') project: Project
     ) {
-        return this.projectService.update(id, project);
+        return await this.projectService.update(id, project) === 0
+        ?
+        {message:'No changes made'}
+        :
+        await this.projectService.oneProject(id);
+        ;
+        
     }
 
     @Delete(':id')
     @UseGuards(AuthGuard)
-    async deleteProject(@Param('id') id: string) {
+    async deleteProject(
+        @Param('id') id: string
+    ) {
         return this.projectService.delete(id);
     }
 }

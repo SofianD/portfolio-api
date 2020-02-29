@@ -31,11 +31,11 @@ export class ProjectService {
     }
 
     async update(id: string, project: Project) {
-        const result = await this.projectModel.findOneAndUpdate(
+        const result = await this.projectModel.updateOne(
             {_id: id},
             project
         );
-        return result;
+        return result.nModified;
     }
 
     async delete(id: string) {
