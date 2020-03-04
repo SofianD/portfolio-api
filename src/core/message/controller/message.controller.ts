@@ -18,7 +18,7 @@ export class MessageController {
 
     @Get(':id')
     @UseGuards(AuthGuard)
-    async getOneSMessage(
+    async getOneMessage(
         @Param('id') id: string
     ) {
         const result = await this.msgService.oneMessage(id);
