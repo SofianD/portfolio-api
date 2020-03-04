@@ -53,7 +53,7 @@ export class MessageController {
     ) {
         const result = await this.msgService.delete(id);
         if (result.n === 0) throw new HttpException('MESSAGE NOT FOUND', HttpStatus.NOT_FOUND);
-        if (result.deletedCount === 0) return { message:'Deletion failed' };
+        if (result.deletedCount === 0) throw new HttpException('DELETION FAILED', HttpStatus.INTERNAL_SERVER_ERROR);
         return {message:'Deletion was successfull'};
     }
 }
