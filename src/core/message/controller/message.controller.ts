@@ -11,11 +11,13 @@ export class MessageController {
     ) {}
 
     @Get()
+    @UseGuards(AuthGuard)
     async getAllMessages() {
         return await this.msgService.allMessages();
     }
 
     @Get(':id')
+    @UseGuards(AuthGuard)
     async getOneSMessage(
         @Param('id') id: string
     ) {
@@ -25,26 +27,25 @@ export class MessageController {
     }
 
     @Post()
-    @UseGuards(AuthGuard)
     async createMessage(
         @Body('messageData') message: Message
     ):Promise<Message> {
         return await this.msgService.create(message);
     }
 
-    @Put(':id')
-    @UseGuards(AuthGuard)
-    async updateMessage(
-        @Param('id') id: string,
-        @Body('messageData') message: Message
-    ) {
-        return await this.msgService.update(id, message) === 0
-        ?
-        {message: 'No Changes made'}
-        :
-        await this.msgService.oneMessage(id)
-        ;
-    }
+    // @Put(':id')
+    // @UseGuards(AuthGuard)
+    // async updateMessage(
+    //     @Param('id') id: string,
+    //     @Body('messageData') message: Message
+    // ) {
+    //     return await this.msgService.update(id, message) === 0
+    //     ?
+    //     {message: 'No Changes made'}
+    //     :
+    //     await this.msgService.oneMessage(id)
+    //     ;
+    // }
 
     @Delete(':id')
     @UseGuards(AuthGuard)
@@ -53,7 +54,7 @@ export class MessageController {
     ) {
         const result = await this.msgService.delete(id);
         if (result.n === 0) throw new HttpException('MESSAGE NOT FOUND', HttpStatus.NOT_FOUND);
-        if (result.deletedCount === 0) return { message:'Deletion failed' };
+        if (result.deletedCount === 0) throw new HttpException('DELETION FAILED', HttpStatus.INTERNAL_SERVER_ERROR);
         return {message:'Deletion was successfull'};
     }
 }

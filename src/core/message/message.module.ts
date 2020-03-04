@@ -28,9 +28,14 @@ export class MessageModule implements NestModule {
             .apply(
                 CheckFormMiddleware
             )
+            .exclude(
+                {
+                    path: 'message',
+                    method: RequestMethod.POST
+                }
+            )
             .forRoutes(
-                { path: 'message', method: RequestMethod.POST },
-                { path: 'message', method: RequestMethod.PUT }
+                MessageController
             );
     }
 }
