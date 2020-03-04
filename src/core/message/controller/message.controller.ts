@@ -32,19 +32,19 @@ export class MessageController {
         return await this.msgService.create(message);
     }
 
-    @Put(':id')
-    @UseGuards(AuthGuard)
-    async updateMessage(
-        @Param('id') id: string,
-        @Body('messageData') message: Message
-    ) {
-        return await this.msgService.update(id, message) === 0
-        ?
-        {message: 'No Changes made'}
-        :
-        await this.msgService.oneMessage(id)
-        ;
-    }
+    // @Put(':id')
+    // @UseGuards(AuthGuard)
+    // async updateMessage(
+    //     @Param('id') id: string,
+    //     @Body('messageData') message: Message
+    // ) {
+    //     return await this.msgService.update(id, message) === 0
+    //     ?
+    //     {message: 'No Changes made'}
+    //     :
+    //     await this.msgService.oneMessage(id)
+    //     ;
+    // }
 
     @Delete(':id')
     @UseGuards(AuthGuard)

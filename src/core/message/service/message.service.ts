@@ -29,16 +29,16 @@ export class MessageService {
         return createdMessage;
     }
 
-    async update(
-        id: string,
-        message: Message
-    ) {
-        const result = await this.msgModel.updateOne(
-            {_id: id},
-            message
-        );
-        return result.nModified;
-    }
+    // async update(
+    //     id: string,
+    //     message: Message
+    // ) {
+    //     const result = await this.msgModel.updateOne(
+    //         {_id: id},
+    //         message
+    //     );
+    //     return result.nModified;
+    // }
 
     async delete(id: string) {
         const result = await this.msgModel.deleteOne({_id: id});
