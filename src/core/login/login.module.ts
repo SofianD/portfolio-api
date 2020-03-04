@@ -25,6 +25,8 @@ export class LoginModule implements NestModule {
             .apply(
                 CheckFormMiddleware
             )
-            .forRoutes('login')
+            .forRoutes(
+                LoginController
+            )
     }
 }
