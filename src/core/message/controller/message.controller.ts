@@ -11,11 +11,13 @@ export class MessageController {
     ) {}
 
     @Get()
+    @UseGuards(AuthGuard)
     async getAllMessages() {
         return await this.msgService.allMessages();
     }
 
     @Get(':id')
+    @UseGuards(AuthGuard)
     async getOneSMessage(
         @Param('id') id: string
     ) {
@@ -25,7 +27,6 @@ export class MessageController {
     }
 
     @Post()
-    @UseGuards(AuthGuard)
     async createMessage(
         @Body('messageData') message: Message
     ):Promise<Message> {
