@@ -12,7 +12,10 @@ export class ProjectController {
 
     @Get()
     async getAllProjects() {
-        return await this.projectService.allProjects();
+        return {
+            message: 'Fetched successfully',
+            projects: await this.projectService.allProjects()
+        };
     }
 
     @Get(':id')
