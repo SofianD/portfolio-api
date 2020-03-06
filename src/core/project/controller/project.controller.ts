@@ -24,7 +24,10 @@ export class ProjectController {
     ) {
         const result = await this.projectService.oneProject(id);
         if (result === null) throw new HttpException('NOT FOUND', HttpStatus.NOT_FOUND);
-        return result;
+        return {
+            message: 'Project found',
+            project: result
+        };
     }
 
     @Post()
@@ -58,6 +61,8 @@ export class ProjectController {
         const result = await this.projectService.delete(id);
         if (result.n === 0) throw new HttpException('PROJECT NOT FOUND', HttpStatus.NOT_FOUND);
         if (result.deletedCount === 0) return {message:'Deletion failed'};
-        return {message:'Deletion was successfull'};
+        return {
+            message:'Deletion was successfull'
+        };
     }
 }
