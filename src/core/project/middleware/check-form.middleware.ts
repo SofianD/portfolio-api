@@ -3,7 +3,7 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 @Injectable()
 export class CheckFormMiddleware implements NestMiddleware {
   use(req: any, res: any, next: () => void) {
-    const project = req.body.projectData;
+    const project = req.body.project;
     
     this.checkBodyValue(project).length === 0
     ?
