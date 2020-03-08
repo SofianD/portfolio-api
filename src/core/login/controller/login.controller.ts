@@ -28,7 +28,8 @@ export class LoginController {
             token: jwt.sign(
                 {_id: result._id},
                 '167CD6DC2E719C1CE671DBAEA8465'
-            )
+            ),
+            expiresIn: 3600
         };
     }
 }
