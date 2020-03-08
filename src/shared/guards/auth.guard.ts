@@ -9,7 +9,6 @@ export class AuthGuard implements CanActivate {
   ): boolean | Promise<boolean> | Observable<boolean> {
     
     const token = context.switchToHttp().getRequest().headers.authorization;
-    console.log(token);
     return token === undefined ?
     false
     :
