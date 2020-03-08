@@ -6,6 +6,11 @@ export const FrameworkSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    skill_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Skill',
+        required: true
+    },
     path_logo: {
         type: String
     }
@@ -13,5 +18,6 @@ export const FrameworkSchema = new mongoose.Schema({
 
 export interface Framework extends Document {
     name: string;
+    skill_id: string;
     path_logo? : string;
 }
