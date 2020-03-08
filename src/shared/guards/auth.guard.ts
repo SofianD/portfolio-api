@@ -16,8 +16,7 @@ export class AuthGuard implements CanActivate {
       token,
       '167CD6DC2E719C1CE671DBAEA8465',
       (err, decoded) => {
-        if(err) return false;
-        return true;
+        return err ? false : true;
       }
     );
   }

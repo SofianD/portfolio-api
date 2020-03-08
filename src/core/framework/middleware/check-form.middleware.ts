@@ -18,6 +18,7 @@ export class CheckFormMiddleware implements NestMiddleware {
   checkBodyValue(fw: any) {
     let errors: string[] = [];
     if (!fw.name) errors.push('Required a valid name');
+    if (!fw.skill_id) errors.push('Required a valid programming language');
     return errors;
   }
 }
