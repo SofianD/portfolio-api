@@ -24,7 +24,7 @@ export class SkillService {
     }
 
     async create(skill: Skill) {
-        const result = await new this.skillModel.save();
+        const result = await new this.skillModel(skill).save();
         const { __v, ...createdSkill} = result._doc;
         return createdSkill;
     }
