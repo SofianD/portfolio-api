@@ -6,6 +6,7 @@ import { ProjectModule } from './core/project/project.module';
 import { FrameworkModule } from './core/framework/framework.module';
 import { MessageModule } from './core/message/message.module';
 import { SkillModule } from './core/skill/skill.module';
+import { PlatformModule } from './core/platform/platform.module';
 
 
 @Module({
@@ -23,7 +24,7 @@ import { SkillModule } from './core/skill/skill.module';
     FrameworkModule,
     MessageModule,
     SkillModule,
-    FrameworkModule
+    PlatformModule
   ]
 })
 export class AppModule {}
