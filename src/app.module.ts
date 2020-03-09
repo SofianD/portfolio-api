@@ -22,7 +22,8 @@ import { SkillModule } from './core/skill/skill.module';
     ProjectModule,
     FrameworkModule,
     MessageModule,
-    SkillModule
+    SkillModule,
+    FrameworkModule
   ]
 })
 export class AppModule {}
