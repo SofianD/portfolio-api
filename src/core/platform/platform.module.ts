@@ -2,23 +2,29 @@ import { Module } from '@nestjs/common';
 import { FrameworkController } from '../framework/controller/framework.controller';
 import { FrameworkService } from '../framework/service/framework.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { FrameworkSchema } from 'src/shared/models/framework.interface';
 import { SkillSchema } from 'src/shared/models/skill.interface';
+import { PlatformSchema } from 'src/shared/models/platform.interface';
+import { PlatformController } from './controller/platform.controller';
+import { PlatformService } from './service/platform.service';
 
 @Module({
     imports: [
         MongooseModule.forFeature([
             {
-                name: 'Framework',
-                schema: FrameworkSchema
+                name: 'Platform',
+                schema: PlatformSchema
+            },
+            {
+                name: 'Skill',
+                schema: SkillSchema
             }
         ])
     ],
     controllers: [
-        FrameworkController
+        PlatformController
     ],
     providers: [
-        FrameworkService
+        PlatformService
     ]
 })
 export class PlatformModule {}
