@@ -34,10 +34,10 @@ export class CheckFormMiddleware implements NestMiddleware {
       !project.skills
     ) errors.push('unknow error with skills');
     if (
-      !project.framework
+      !project.frameworks
     ) errors.push('unknow error with framework(s)');
     if (
-      !project.platform
+      !project.platforms
     ) errors.push('unknow error with platform(s)');
 
     return errors;
