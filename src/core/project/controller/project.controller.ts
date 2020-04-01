@@ -33,16 +33,16 @@ export class ProjectController {
     @Post()
     @UseGuards(AuthGuard)
     async createProject(
-        @Body('projectData') projectData: Project
+        @Body('project') project: Project
     ): Promise<Project> {
-        return await this.projectService.create(projectData);
+        return await this.projectService.create(project);
     }
 
     @Put(':id')
     @UseGuards(AuthGuard)
     async updateProject(
         @Param('id') id: string,
-        @Body('projectData') project: Project
+        @Body('project') project: Project
     ) {
         return await this.projectService.update(id, project) === 0
         ?

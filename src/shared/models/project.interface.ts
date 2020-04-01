@@ -1,5 +1,8 @@
 import * as mongoose from "mongoose";
 import { Document } from 'mongoose';
+import { SkillSchema } from "./skill.interface";
+import { FrameworkSchema } from "./framework.interface";
+import { PlatformSchema } from "./platform.interface";
 
 export const ProjectSchema = new mongoose.Schema({
     name : {
@@ -32,20 +35,20 @@ export const ProjectSchema = new mongoose.Schema({
     ],
     skills: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Skill'
+            formType: mongoose.Schema.Types.ObjectId,
+            ref: SkillSchema
         }
     ],
-    framework: [
+    frameworks: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Framework'
+            formType: mongoose.Schema.Types.ObjectId,
+            ref: FrameworkSchema
         }
     ],
-    platform: [
+    platforms: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Platform'
+            formType: mongoose.Schema.Types.ObjectId,
+            ref: PlatformSchema
         }
     ]
 })
