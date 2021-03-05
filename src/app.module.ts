@@ -12,7 +12,7 @@ import { PlatformModule } from './core/platform/platform.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://user:5bLXgHFheEOQrowe@cluster0-ohnuj.mongodb.net/test?retryWrites=true&w=majority',
+      '',
       {
         useNewUrlParser: true,
         useUnifiedTopology: true
